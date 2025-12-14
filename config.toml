@@ -1,0 +1,6 @@
+base_url = "https://www.robertsiliciano.com"
+
+title = "Robert's Notes"
+
+[markdown]
+highlight_code = true
