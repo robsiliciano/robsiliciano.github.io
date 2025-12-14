@@ -1,6 +1,7 @@
 base_url = "https://www.robertsiliciano.com"
-
 title = "Robert's Notes"
+
+compile_sass = true
 
 [markdown]
 highlight_code = true

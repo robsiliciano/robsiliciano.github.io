@@ -7,7 +7,8 @@ date = 2025-12-14
 
 # Getting Started
 
-* Official Zola [Documentation](https://www.getzola.org/documentation/getting-started/overview/).
+* Official Zola [Documentation](https://www.getzola.org/documentation/getting-started/overview/)
+* Dylan McGannon's [Tutorial](https://dyl.dog/using-zola-to-build-a-blog/)
 
 # Zola with Github Pages
 
