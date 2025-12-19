@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 
+{% block extra_head %}
+<link rel="stylesheet" href="{{ get_url(path='index.css') }}">
+{% endblock extra_head %}
+
 {% block content %}
-<h1 class="title">Robert's Notes</h1>
-<p><a href="{{ get_url(path='@/notes/_index.md') }}">Notes</a>.</p>
+<div class="home-container">
+<h1 class="home-title">Robert L. Siliciano</h1>
+<div class="home-links">
+<p><a href="{{ get_url(path='@/notes/_index.md') }}">Personal Notes</a>.</p>
+<p><a href="https://www.linkedin.com/in/robert-siliciano/">LinkedIn</a>.</p>
+<p><a href="https://github.com/robsiliciano">Github</a>.</p>
+</div>
+</div>
 {% endblock content %}

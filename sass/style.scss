@@ -1,9 +1,12 @@
 .container {
-  max-width: 900px; /* Max width to keep content readable on large screens */
-  margin: 0 auto; /* Centers the container horizontally */
-  padding: 20px; /* Adds some space around the content */
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
+/* Notes */
 h1.title {
   font-size: 3rem;
   margin-bottom: 0;
