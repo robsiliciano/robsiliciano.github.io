@@ -5,3 +5,6 @@ compile_sass = true
 
 [markdown]
 highlight_code = true
+highlight_theme = "cheerfully-light"
+
+insert_anchor_links = "heading"

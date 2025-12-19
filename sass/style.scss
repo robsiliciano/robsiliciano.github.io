@@ -3,3 +3,55 @@
   margin: 0 auto; /* Centers the container horizontally */
   padding: 20px; /* Adds some space around the content */
 }
+
+h1.title {
+  font-size: 3rem;
+  margin-bottom: 0;
+}
+p.subtitle {
+  margin-bottom: 3rem;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+
+/* Code blocks */
+pre {
+  padding: 1rem;
+  overflow: auto;
+  border: 1px solid black;
+}
+pre table {
+  width: 100%;
+  border-collapse: collapse;
+}
+pre[data-name] {
+  position: relative;
+  padding-top: 2rem;
+}
+pre[data-name]::before {
+  content: attr(data-name);
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  color: black;
+  padding: 0.2rem 1rem;
+  box-sizing: border-box;
+  font-size: 0.8rem;
+  border-bottom: 1px solid black;
+}
+
+/* Don't make headers look like links */
+a.zola-anchor {
+  color: black;
+  text-decoration: none;
+}
+a.zola-anchor:hover {
+  text-decoration: underline;
+}
