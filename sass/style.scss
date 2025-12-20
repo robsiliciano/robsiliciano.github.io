@@ -6,6 +6,17 @@
   box-sizing: border-box;
 }
 
+/* Readable blog look */
+body {
+  line-height: 1.4;
+  font-size: 19px;
+  color: #333;
+  background-color: #fbfbfb;
+}
+h1, h2, h3 {
+  line-height: 1.1
+}
+  
 /* Notes */
 h1.title {
   font-size: 3rem;
