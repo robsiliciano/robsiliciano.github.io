@@ -7,11 +7,13 @@
 }
 
 /* Readable blog look */
-body {
-  line-height: 1.4;
+html {
   font-size: 19px;
   color: #333;
   background-color: #fbfbfb;
+}
+body {
+  line-height: 1.4;
 }
 h1, h2, h3 {
   line-height: 1.1
@@ -33,8 +35,12 @@ h2 {
 }
 
 /* Code blocks */
+code {
+  font-size: 0.8rem;
+}
 pre {
   padding: 1rem;
+  font-size: 0.8rem;
   overflow: auto;
   border: 1px solid black;
 }
@@ -44,7 +50,7 @@ pre table {
 }
 pre[data-name] {
   position: relative;
-  padding-top: 2rem;
+  padding-top: 2.5rem;
 }
 pre[data-name]::before {
   content: attr(data-name);
@@ -57,7 +63,7 @@ pre[data-name]::before {
   color: black;
   padding: 0.2rem 1rem;
   box-sizing: border-box;
-  font-size: 0.8rem;
+  /* font-size: 0.8em; */
   border-bottom: 1px solid black;
 }
 
