@@ -3,8 +3,7 @@ title = "Robert's Notes"
 
 compile_sass = true
 
-[markdown]
-highlight_code = true
-highlight_theme = "cheerfully-light"
+[markdown.highlighting]
+theme = "catppuccin-latte"
 
 insert_anchor_links = "heading"
