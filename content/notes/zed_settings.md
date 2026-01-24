@@ -5,7 +5,7 @@ date = "2026-01-21"
 
 # Typesetting
 
-I'm a huge fan of Astral's `uv` and `ruff`, so I've been excited for `ty`, their new [type checker and language server](https://docs.astral.sh/ty/). It's pretty easy to [use `ty` as Zed's language server](https://docs.astral.sh/ty/editors/#neovim), which comes [ready to go](https://zed.dev/docs/languages/python#configure-python-language-servers-in-zed) in Zed.
+I'm a huge fan of Astral's `uv` and `ruff`, so I've been excited for `ty`, their new [type checker and language server](https://docs.astral.sh/ty/). It's pretty easy to [use `ty` as Zed's language server](https://docs.astral.sh/ty/editors/#zed), which comes [ready to go](https://zed.dev/docs/languages/python#configure-python-language-servers-in-zed) in Zed.
 
 ```json,name=settings.json
   "languages": {

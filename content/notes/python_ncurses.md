@@ -35,7 +35,7 @@ finally:
     curses.endwin()
 ```
 
-Now, If the code crashes, Python will make sure to clean up after itself and restore the terminal state.
+Now, if the code crashes, Python will make sure to clean up after itself and restore the terminal state.
 
 # The Quick Way
 

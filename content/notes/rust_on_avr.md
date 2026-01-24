@@ -31,14 +31,15 @@ You'll have to tell Cargo to cross compile for your AVR microcontroller. Specifi
 [build]
 target = "avr-none"
 rustflags = ["-C", "target-cpu=atmega328p"]
-````
+```
+
 ## The Standard Library
 
-Usually, you wouldn't need to compile the Rust standard library.  Rust provides a [pre-compiled binary](https://rust-lang.github.io/rustup/cross-compilation.html) in the `rust-src` component for most host platforms that you'd ever use. However, AVR microcontrollers aren't one of those platforms!
+Usually, you wouldn't need to compile the Rust standard library. Rust provides a [pre-compiled binary](https://rust-lang.github.io/rustup/cross-compilation.html) in the `rust-src` component for most host platforms that you'd ever use. However, AVR microcontrollers aren't one of those platforms!
 
 Fortunately, we don't actually want a pre-compiled Rust standard library for such a small microcontroller. We really only want the standard library's [`core` crate](https://doc.rust-lang.org/core/index.html), and we want to [build it ourselves](https://doc.rust-lang.org/cargo/reference/unstable.html#build-std) when we build the rest of our project. This lets us keep our binaries small, which is important on a microcontroller with limited program memory. (We'll add optimization flags later.)
 
-There's also a lot in the Rust standard library that we don't necessarily want. First, we're running on bare metal without an operating system, so a lot of platform-based things for the filesystem or threadding don't make sense. What would a filesystem look like for an off-the-shelf Arduino? Second, we don't necessarily want the heap and dynamic memory access, as provided by the standard library's [`alloc` crate](https://doc.rust-lang.org/alloc/). We'd incur overhead to use it, but many microcontroller programs are just fine without it.
+There's also a lot in the Rust standard library that we don't necessarily want. First, we're running on bare metal without an operating system, so a lot of platform-based things for the filesystem or threading don't make sense. What would a filesystem look like for an off-the-shelf Arduino? Second, we don't necessarily want the heap and dynamic memory access, as provided by the standard library's [`alloc` crate](https://doc.rust-lang.org/alloc/). We'd incur overhead to use it, but many microcontroller programs are just fine without it.
 
 To build the standard library's `core`, we'll need the following. Note that it's an unstable feature for binaries, which requires more configuration later on.
 
@@ -99,6 +100,7 @@ You'll need three dependencies for a basic Hello, World program.
 cargo add --git https://github.com/rahix/avr-hal.git arduino-hal -F arduino-uno
 cargo add panic-halt ufmt
 ```
+
 ### `arduino-hal`
 
 In an AVR project, you'll need a crate that lets you access the hardware. Usually, that will be a hardware abstraction layers (HAL) from [Rahix's `avr-hal` repo](https://github.com/rahix/avr-hal.git), which provides `arduino-hal` for Arduino boards and other HAL crates for specific AVR chips. I'll demo this with an Arduino Uno, but you can use another board or a non-Arduino AVR setup. Just make sure to switch configurations away from the Uno.
@@ -109,13 +111,13 @@ The HAL crates aren't available in the crates.io registry, so you'll need to [ad
 
 ### `panic-halt`
 
-One consequence of not having the full Rust standard library is that we need to provide a panic handler explicitly specify a [panic handler](https://docs.rust-embedded.org/book/start/panicking.html) that will run whenever the code `panic!`s.
+One consequence of not having the full Rust standard library is that we need to provide a [panic handler](https://docs.rust-embedded.org/book/start/panicking.html) that will run whenever the code `panic!`s.
 
 [`panic-halt`](https://github.com/korken89/panic-halt) is a simple option that just enters an infinite loop if the code panics: the [whole thing](https://github.com/korken89/panic-halt/blob/master/src/lib.rs) is just `loop {}`. You won't get any traceback or error message with this handler, so be prepared for more difficult debugging!
 
 ### `ufmt`
 
-Stylized as "micro" rather than "u," [this crate](https://docs.rs/ufmt/latest/ufmt/) is used by the HAL to write to the UART serial bus. It's nice on microcontrollers as an alternative to `core::fmt` since it's optimized for build size and speed and doesn't panic in many places. With `panic-halt` as your handler, any panicing will stop any activity without providing a traceback, so I'd recommend avoiding code that could panic as much as possible.
+Stylized as "micro" rather than "u," [this crate](https://docs.rs/ufmt/latest/ufmt/) is used by the HAL to write to the UART serial bus. It's nice on microcontrollers as an alternative to `core::fmt` since it's optimized for build size and speed and doesn't panic in many places. With `panic-halt` as your handler, any panicking will stop any activity without providing a traceback, so I'd recommend avoiding code that could panic as much as possible.
 
 You don't need `ufmt` in general if you're not doing string processing or writing to the serial bus, but you'll always see it in the lock file as it's currently a dependency of `arduino-hal`.
 
@@ -161,7 +163,7 @@ opt-level = "s"
 
 # The Rust Toolchain
 
-The last configuration file we need is for the Rust toolchain. Unfortunately, your off-the-shelf stable rust toolchain won't work AVR chips becuase building the standard library is unstable. Instead, we'll need to use a nightly toolchain.
+The last configuration file we need is for the Rust toolchain. Unfortunately, your off-the-shelf stable rust toolchain won't work AVR chips because building the standard library is unstable. Instead, we'll need to use a nightly toolchain.
 
 There's a lot of ways to get a project-specific toolchain, like command line arguments, environmental variables, or project overrides. We'll want to specify it with a `rust-toolchain.toml` file so it's saved in the project. Note that the toolchain file is one of the [later places](https://rust-lang.github.io/rustup/overrides.html) that Rust will check, so make sure you don't have an environmental variable or override active.
 

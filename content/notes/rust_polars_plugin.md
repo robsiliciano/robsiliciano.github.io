@@ -11,7 +11,7 @@ I got through most of the days before I ran into my main obstacle, the lack of a
 
 ## Polars Plugin Guides
 
-The best resource on writing a polars plugin is this [extensive tutorial](https://marcogorelli.github.io/polars-plugins-tutorial/) by Marco Gorelli, a developer of polars and pandas. There's also the [official polars user guide](https://docs.pola.rs/user-guide/plugins/expr_plugins/)'s section on' writing a plugin. Otherwise, I didn't find a ton of resources on writing plugins, which seem like an underutilized part of polars.
+The best resource on writing a polars plugin is this [extensive tutorial](https://marcogorelli.github.io/polars-plugins-tutorial/) by Marco Gorelli, a developer of polars and pandas. There's also the [official polars user guide](https://docs.pola.rs/user-guide/plugins/expr_plugins/)'s section on writing a plugin. Otherwise, I didn't find a ton of resources on writing plugins, which seem like an underutilized part of polars.
 
 # Project Setup
 
@@ -21,13 +21,13 @@ I'm going to walk through a plugin to compute factorials. I'll set the project u
 
 Any time you want to use Rust code from Python, you're going to use [PyO3](https://pyo3.rs) and its build system, [Maturin](https://www.maturin.rs). You can also use Maturin with binding other than PyO3, but that's not going to be relevant for a polars extension.
 
-Maturin can initialize a Python-Rust project for you, but there's a trick to avoid a Catch-22. Unfortunately, Maturin doesn't have an automated setup [on top of existing projects](https://pyo3.rs/v0.27.2/getting-started.html#adding-to-an-existing-project), so you can't use it with your project's `uv` environment. However, you do need an environment in which to install Maturin, before you can run `maturin new`.  Fortunately, you don't have to do seomthing weird like use use system Python, because you can just run it as a tool with [`uvx`](https://docs.astral.sh/uv/guides/tools/)!
+Maturin can initialize a Python-Rust project for you, but there's a trick to avoid a Catch-22. Unfortunately, Maturin doesn't have an automated setup [on top of existing projects](https://pyo3.rs/v0.27.2/getting-started.html#adding-to-an-existing-project), so you can't use it with your project's `uv` environment. However, you do need an environment in which to install Maturin, before you can run `maturin new`.  Fortunately, you don't have to do something weird like use use system Python, because you can just run it as a tool with [`uvx`](https://docs.astral.sh/uv/guides/tools/)!
 
 ```sh
 uvx maturin new --mixed -b pyo3 polars-number
 ```
 
-There are [a couple ways](https://www.maturin.rs/project_layout.html#mixed-rustpython-project) to structure a Rust and Python project, but I've used `--mixed` to  keep the Rust code in `src` and the Python code in `python/polars-number`.
+There are [a couple ways](https://www.maturin.rs/project_layout.html#mixed-rustpython-project) to structure a Rust and Python project, but I've used `--mixed` to keep the Rust code in `src` and the Python code in `python/polars-number`.
 
 ## Maturin and uv
 
@@ -135,7 +135,7 @@ def factorial(expr: IntoExpr) -> pl.Expr:
 
 Finally, let's update the test script `run.py` to use polars:
 
-```rs,name=run.py
+```py,name=run.py
 import polars as pl
 
 from polars_number import factorial
@@ -176,7 +176,7 @@ shape: (10, 2)
 
 # Handling Null Values
 
-In polars, every value could be null, and your plugin should to be able to handle them without crashing.
+In polars, every value could be null, and your plugin should be able to handle them without crashing.
 
 Here's a modified `run.py` script where one of the values is null.
 
@@ -187,7 +187,7 @@ from polars_number import factorial
 
 if __name__ == "__main__":
     s = pl.DataFrame({"n": range(10)}).with_columns(
-        pl.col("n").cast(pl.UInt64).replace(1, Null)
+        pl.col("n").cast(pl.UInt64).replace(1, None)
     )
 
     s = s.with_columns(factorial=factorial("n"))
@@ -239,7 +239,7 @@ shape: (10, 2)
 
 # Handling More Types
 
-So far, our code refuses to accept anything but a 32-bit unsigned integer (`UInt64`/`u64`). Anything else, like a lower-precision unsigned integer, will cause a crash.
+So far, our code refuses to accept anything but a 64-bit unsigned integer (`UInt64`/`u64`). Anything else, like a lower-precision unsigned integer, will cause a crash.
 
 ```py,name=run.py
 import polars as pl

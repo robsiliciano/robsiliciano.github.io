@@ -17,9 +17,9 @@ A couple days, 8 and 9 to be exact, otherwise passed in nice, comma-separated da
 
 # Going Beyond Commas
 
-Sometimes, inputs had pieces of information separated by things other than commas. For instance, day 11 has input rows like `input: outputs` where two pieces of information are separated by a colon. You can change the separate from commas to any single byte using the `separator` argument.
+Sometimes, inputs had pieces of information separated by things other than commas. For instance, day 11 has input rows like `input: outputs` where two pieces of information are separated by a colon. You can change the separator from commas to any single byte using the `separator` argument.
 
-My ugliest use of the custom separator was on day 2, where the input was a comma-separated list of ranges like `10-20,30-40`. I could read this as a headerless CSV, but then I'd have a single row, a large and unknown number of columns, and string values that couldn't be converted to a numeric primative. Here, I got a much nicer read by switching the separator to `-` and telling the parser to interpret commas as newlines with `eol_char=","`. The resulting data was a nice shape, with two numeric columns, one for the range start and one for the range end, where each row represented an interval.
+My ugliest use of the custom separator was on day 2, where the input was a comma-separated list of ranges like `10-20,30-40`. I could read this as a headerless CSV, but then I'd have a single row, a large and unknown number of columns, and string values that couldn't be converted to a numeric primitive. Here, I got a much nicer read by switching the separator to `-` and telling the parser to interpret commas as newlines with `eol_char=","`. The resulting data was a nice shape, with two numeric columns, one for the range start and one for the range end, where each row represented an interval.
 
 # Grids
 
@@ -36,7 +36,7 @@ I read grid data in four steps:
 The full code might look like:
 ```py
 df = (
-    pl.scan_csv(puzle_input, has_header=False)
+    pl.scan_csv(puzzle_input, has_header=False)
     .select(pl.col("column_1").str.split(""), y=pl.row_index())
     .explode("column_1")
     .with_columns(x=pl.row_index().over("y"))
