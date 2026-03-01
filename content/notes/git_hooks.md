@@ -1,6 +1,7 @@
 +++
 title = "A Lesser-Known Git Hook"
 date = 2026-02-13
+description = "I frequently use git's pre-commit hook, but wondered about the others. Here, I explored a much less useful hook that can edit commit messages after you enter them. It's fun for jokes, but I'd never want that hook making changes in anything important!"
 +++
 
 `commit-msg`

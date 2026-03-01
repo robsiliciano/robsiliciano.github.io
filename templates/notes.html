@@ -1,11 +1,14 @@
 {% extends "base.html" %} {% block content %}
 <h1 class="title">{{ section.title }}</h1>
 {{ section.content | safe }}
-<ul>
+<ul class="notes">
     {% for page in section.pages %}
     <li>
-        [{{ page.date }}]
         <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+        <time datetime="{{ page.date }}">{{ page.date }}</time>
+        {% if page.description %}
+        <div>{{ page.description }}</div>
+        {% endif %}
     </li>
     {% endfor %}
 </ul>

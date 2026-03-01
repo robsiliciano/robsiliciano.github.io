@@ -1,6 +1,7 @@
 +++
 title = "RAII for Crossterm"
 date = 2026-02-22
+description = "Following up my earlier note on Python, you also need to be careful with terminal settings when building text user interfaces in Rust. Do things wrong and your terminal will be all messed up even after your program exits. Here's a trick to avoid that problem when using Crossterm."
 +++
 
 Welcome to part 2 in what has become a "how not to screw up your terminal" series for writing text user interfaces (TUIs)!

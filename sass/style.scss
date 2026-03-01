@@ -6,12 +6,32 @@
   box-sizing: border-box;
 }
 
+/* Links have underlines only on hover */
 a {
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+/* Notes layout */
+ul.notes {
+  list-style: none;
+}
+
+ul.notes > li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+ul.notes > li > a {
+  font-size: 1.5rem;
+}
+
+ul.notes > li > time{
+  color: #555;
 }
 
 /* Readable blog look */

@@ -1,6 +1,7 @@
 +++
 title = "Running Rust on AVR Chips"
 date = 2025-12-19
+description = "I was surprised that it's not that hard to get Rust code running on AVR microcontrollers. You can usually use a premade template, but I dove into the configurations to see how it all worked."
 +++
 
 # Rust on AVR

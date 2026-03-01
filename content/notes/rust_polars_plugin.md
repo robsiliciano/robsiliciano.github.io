@@ -1,6 +1,7 @@
 +++
 title = "Polars Plugins with Rust"
 date = 2026-01-03
+description = "A big selling point for polars is its Rust implementation: Rust is way faster than Python, and that time adds up when processing a lot of data! With plugins, you can fill the gap when polars doesn't have a fast implementation of some function on your data. Write in Rust, call from Python."
 +++
 
 # Plugins for Polars

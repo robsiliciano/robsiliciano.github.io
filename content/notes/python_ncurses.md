@@ -1,6 +1,7 @@
 +++
 title = "Safe Curses in Python"
 date = 2026-01-17
+description = "When writing a text user interface, it's easy to mess up the terminal settings that persist after your program exits. If things go really wrong, your terminal can end up practically unusable! I have some tips to avoid those outcomes when building in Python."
 +++
 
 # How to Mess Up a Terminal

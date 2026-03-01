@@ -1,6 +1,7 @@
 +++
 title = "Fun with scan_csv"
 date = 2026-01-04
+description = "I challenged myself to do Advent of Code this year using only polars, which meant I could only read the weird input files using readers meant for tabular data formats! These are my tricks for making CSV readers interpret all sorts of other inputs."
 +++
 
 This year, I decided to do [Advent of Code](https://adventofcode.com/2025/day/12) using only [polars](https://pola.rs), the dataframe library. While polars is great for many things, it's not meant to do weird things like Advent of Code puzzles.

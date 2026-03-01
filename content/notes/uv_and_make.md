@@ -1,6 +1,7 @@
 +++
 title = "Make-ing with uv"
 date = 2026-02-28
+description = "I've always hated setting up virtual environments as part of my Makefiles. Now, with uv, I don't have to worry about whether my virtual environment is up to date with my dependency list. There's just one missing link in clean Makefiles: rebuilding Python targets when those dependencies change."
 +++
 
 I love using Makefiles to organize my statistical analysis and data reconfiguration projects, but I always found it painful to properly write rules for my virtual environments. I'd usually risk it and leave dependency management out. Hopefully there wouldn't be a package change that could affect any of my rules!

@@ -1,6 +1,7 @@
 +++
 title = "A Quick Introduction to lsp_types"
 date = 2026-02-18
+description = "There's a great crate for using the Language Server Protocol (LSP) in Rust, but there's not much documentation on how to use it. These are my notes on getting a basic lifecycle communication with a language server."
 +++
 
 I'm a big fan of Rust and the Language Server Protocol (LSP) but I haven't found good documentation on how to use LSP with Rust. I wrote these quick notes on using [`lsp_types`](https://docs.rs/lsp-types/latest/lsp_types/), which is a great crate but with almost no documentation.

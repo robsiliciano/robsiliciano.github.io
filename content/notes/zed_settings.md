@@ -1,6 +1,7 @@
 +++
 title = "Zed Settings"
 date = "2026-01-21"
+description = "Just some settings I like for the Zed editor."
 +++
 
 # Typesetting

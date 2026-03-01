@@ -1,6 +1,7 @@
 +++
 title = "LSP By Hand"
 date = "2026-01-24"
+description = "The Language Server Protocol (LSP) enables a lot of my favorite features by letting editors communicate with a common language server. I wanted to learn more about how it all worked, so I communicated with a language server by hand, just typing text into the terminal."
 +++
 
 # LSP

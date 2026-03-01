@@ -1,6 +1,7 @@
 +++
 title = "Pip is Chaos"
 date = 2026-01-30
+description = "I think it's common knowledge now that using pip for Python package management can go off the rails quickly and break things. I never ran into the worst problems myself, so I constructed my own package index to force the failures and see them firsthand."
 +++
 
 Nothing in Python scares me like `pip`, the included package manager. Anytime I see `pip` written or used, I immediately worry about an upcoming dependency hell!
