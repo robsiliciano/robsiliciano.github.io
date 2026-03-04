@@ -34,6 +34,9 @@ ul.notes > li > time{
   color: #555;
 }
 
+/* Keep formula sizes at text size */
+.katex { font-size: 1rem; }
+
 /* Readable blog look */
 html {
   font-size: 19px;
