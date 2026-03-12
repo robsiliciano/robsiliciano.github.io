@@ -43,6 +43,12 @@ html {
   color: #333;
   background-color: #fbfbfb;
 }
+@media (prefers-contrast: more) {
+    html {
+        color: #000;
+        background-color: #ffffff;
+    }
+}
 body {
   line-height: 1.4;
 }
